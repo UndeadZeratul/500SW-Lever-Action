@@ -328,7 +328,7 @@ class HD50SWLeverRifle:HDWeapon{
 		---- A 1 bright{
 			HDFlashAlpha(64);
 			A_Light1();
-			let bbb=HDBulletActor.FireBullet(self,"HDB_500SW",speedfactor:1.5);
+			let bbb=HDBulletActor.FireBullet(self,"HDB_500SW",speedfactor:1.45);
 			if(
 				frandom(0,ceilingz-floorz)<bbb.speed*0.3
 			)A_AlertMonsters(256);
@@ -451,7 +451,7 @@ class HD50SWLeverRifle:HDWeapon{
 		stop;
 	}
 	override void initializewepstats(bool idfa){
-		weaponstatus[LEVS_MAG]=10;
+		weaponstatus[LEVS_MAG]=8;
 		weaponstatus[LEVS_CHAMBER]=2;
 		weaponstatus[LEVS_ZOOM]=30;
 	}
