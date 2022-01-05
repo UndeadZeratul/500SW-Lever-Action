@@ -83,19 +83,16 @@ class HD50SWLeverRifle:HDWeapon{
 		);
 		if(hdw.WeaponStatus[LEVS_SCOPE] & scopeview)
 			{
-				int scaledyoffset=60;
+				int scaledyoffset=52;
 				int scaledwidth=72;
 				double degree=hdw.weaponstatus[LEVS_ZOOM]*0.1;
 				double deg=1/degree;
 				int cx,cy,cw,ch;
 				[cx,cy,cw,ch]=screen.GetClipRect();
-				sb.SetClipRect(
-					-36+bob.x,24+bob.y,scaledwidth,scaledwidth,
-					sb.DI_SCREEN_CENTER
-				);
+				sb.SetClipRect(-36+bob.x,14+bob.y,scaledwidth,scaledwidth,sb.DI_SCREEN_CENTER);
 				texman.setcameratotexture(hpc,"HDXHCAM3",degree);
 				sb.drawimage(
-					"HDXHCAM3",(0,scaledyoffset)+bob,
+					"HDXHCAM3",(0,scaledyoffset-1)+bob,
 					sb.DI_SCREEN_CENTER|sb.DI_ITEM_CENTER,
 					scale:(0.5,0.5)
 				);
