@@ -90,7 +90,7 @@ class HD50SWLeverRifle:HDWeapon{
 				int cx,cy,cw,ch;
 				[cx,cy,cw,ch]=screen.GetClipRect();
 				sb.SetClipRect(-36+bob.x,14+bob.y,scaledwidth,scaledwidth,sb.DI_SCREEN_CENTER);
-				texman.setcameratotexture(hpc,"HDXHCAM3",degree);
+				texman.setcameratotexture(hpc,"HDXHCAM_ZM66",degree);
 				sb.drawimage(
 					"HDXHCAM3",(0,scaledyoffset-1)+bob,
 					sb.DI_SCREEN_CENTER|sb.DI_ITEM_CENTER,
