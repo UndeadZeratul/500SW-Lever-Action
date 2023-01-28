@@ -81,40 +81,45 @@ class HD50SWLeverRifle:HDWeapon{
 		sb.drawimage(
 			"backsite",(0,0)+bob,sb.DI_SCREEN_CENTER|sb.DI_ITEM_TOP
 		);
-		if(hdw.WeaponStatus[LEVS_SCOPE] & scopeview)
+	if(hdw.WeaponStatus[LEVS_SCOPE] & scopeview)
 			{
-				int scaledyoffset=52;
+				int scaledyoffset=60;
 				int scaledwidth=72;
 				double degree=hdw.weaponstatus[LEVS_ZOOM]*0.1;
 				double deg=1/degree;
 				int cx,cy,cw,ch;
 				[cx,cy,cw,ch]=screen.GetClipRect();
-				sb.SetClipRect(-36+bob.x,14+bob.y,scaledwidth,scaledwidth,sb.DI_SCREEN_CENTER);
-				texman.setcameratotexture(hpc,"HDXHCAM_ZM66",degree);
+				sb.SetClipRect(
+					-36+bob.x,24+bob.y,scaledwidth,scaledwidth,
+					sb.DI_SCREEN_CENTER
+				);
+
+
+				sb.fill(color(255,0,0,0),
+					bob.x-37,scaledyoffset+bob.y-37,
+					74,74,sb.DI_SCREEN_CENTER|sb.DI_ITEM_CENTER
+				);
+		
+				texman.setcameratotexture(hpc,"HDXCAM_ZM66",degree);
+				let cam  = texman.CheckForTexture("HDXCAM_ZM66",TexMan.Type_Any);
+				sb.DrawCircle(cam,(0,scaledyoffset)+bob*3,.11,usePixelRatio:true);
+
 				sb.drawimage(
-					"HDXHCAM3",(0,scaledyoffset-1)+bob,
+					"LVRG_RET",(0,scaledyoffset)+bob,
 					sb.DI_SCREEN_CENTER|sb.DI_ITEM_CENTER,
-					scale:(0.5,0.5)
+					scale:(0.72,0.72)
 				);
-				sb.drawimage(
-					"reticle1",(0,scaledyoffset)+bob,
-					sb.DI_SCREEN_CENTER|sb.DI_ITEM_CENTER,
-					scale:(0.52,0.52)
-				);
-				sb.drawimage(
-					"scophole",(0,scaledyoffset)+bob*5,sb.DI_SCREEN_CENTER|sb.DI_ITEM_CENTER,
-					scale:(0.95,0.95)
-				);
+
 				screen.SetClipRect(cx,cy,cw,ch);
 				sb.drawimage(
 					"libscope",(0,scaledyoffset)+bob,sb.DI_SCREEN_CENTER|sb.DI_ITEM_CENTER,
 					scale:(1.0,1.0)
 				);
-				sb.drawstring(
-					sb.mAmountFont,string.format("%.1f",degree),
-					(6+bob.x,95+bob.y),sb.DI_SCREEN_CENTER|sb.DI_TEXT_ALIGN_RIGHT,
-					Font.CR_BLACK
-				);
+				//sb.drawstring(
+				//	sb.mAmountFont,string.format("%.1f",degree),
+				//	(6+bob.x,95+bob.y),sb.DI_SCREEN_CENTER|sb.DI_TEXT_ALIGN_RIGHT,
+				//	Font.CR_BLACK
+				//);
 		}
 	}
 	override void DropOneAmmo(int amt){
@@ -147,8 +152,9 @@ class HD50SWLeverRifle:HDWeapon{
 		#### A 0 A_JumpIf(invoker.weaponstatus[LEVS_HAMMER]<2,2);
 		#### B 0;
 		---- # 1{
-		if(invoker.weaponstatus[LEVS_SCOPE]>0 && pressingzoom())A_ZoomAdjust(LEVS_ZOOM,25,70);
-			else A_WeaponReady(WRF_ALL);
+		//if(invoker.weaponstatus[LEVS_SCOPE]>0 && pressingzoom())A_ZoomAdjust(LEVS_ZOOM,25,70);
+			//else
+			A_WeaponReady(WRF_ALL);
 			A_SetAltHold(false);
 		}goto readyend;
 	//user3:
@@ -450,7 +456,7 @@ class HD50SWLeverRifle:HDWeapon{
 	override void initializewepstats(bool idfa){
 		weaponstatus[LEVS_MAG]=10;
 		weaponstatus[LEVS_CHAMBER]=2;
-		weaponstatus[LEVS_ZOOM]=30;
+		weaponstatus[LEVS_ZOOM]=20;
 	}
 
 }
