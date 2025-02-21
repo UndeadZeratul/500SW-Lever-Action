@@ -1,0 +1,7 @@
+[en default]
+
+TAG_500LEVERGAT    = "Sawyer LR37 ''Big Boy'' Hunting Carbine, Big Bore";
+
+PICKUP_500LEVERGAT = "You got the big-bore lever action rifle!";
+
+OB_500LEVERGAT     = "%k made %o yee their last haw.";
